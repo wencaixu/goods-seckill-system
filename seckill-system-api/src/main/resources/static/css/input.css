@@ -1,0 +1,27 @@
+
+#login-main {
+    height: 100%;
+    width: 100%;
+}
+
+.login-box {
+    height:300px;
+    width: 300px;
+    background:#ffffff;
+    margin:100px auto 0 auto;
+    border:1px solid #c0c0c0;
+}
+
+.login-box .controller-box{
+    height:40px;
+    margin:10px auto;
+    padding-left:65px;
+}
+
+.login-box .controller-header{
+    margin-top:40px;
+}
+
+.login-box .controller-header h3{
+    text-align: center;
+}

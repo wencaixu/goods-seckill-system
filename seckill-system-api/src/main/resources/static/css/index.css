@@ -1,0 +1,196 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    color: #444;
+    background: antiquewhite;
+}
+
+.container {
+    display: block;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.container-message{
+    display: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear-float:after,
+.clear-float:before {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.top-nav .border {
+    border: 1px solid #000;
+    width: 100%;
+    height: 35px;
+    background: #444444;
+    color: #ffffff99;
+}
+
+.top-nav .border .nav {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+}
+
+.header .picture {
+    padding: 20px 50px 20px 0;
+}
+
+.header .container {
+    width: 100%;
+    height: 100px;
+}
+
+.header .container .classify {
+    font-size: 17px;
+    padding: 40px 0;
+}
+
+.header .container .classify span{
+    display:block;
+    margin-left:30px;
+    float:left;
+}
+
+.header .container button {
+    height: 50px;
+    width: 100px;
+    background: #c0c0c0;
+    color:#ffffff;
+    border:none;
+}
+
+.header .container .right {
+    font-size: 14px;
+    padding: 30px 0 0 0;
+}
+
+.top-nav .border .right a{
+    color: white;
+    text-underline: none;
+}
+
+
+.main-promote .time {
+    font-size: 18px;
+    border: 1px solid #c0c0c0;
+    padding: 26px 0;
+    color: rebeccapurple;
+    text-align: center;
+}
+
+.main-promote .time span {
+    margin: 0 50px;
+}
+
+.main-promote table tr th {
+    border: 1px solid #c0c0c0;
+    width: 420px;
+    height: 200px;
+    font-weight: unset;
+}
+
+.main-promote table tr th .contain-left{
+    height:200px;
+    width: 206px;
+    float: left;
+}
+
+.main-promote table tr th .dt-1{
+    margin-top:30px;
+    text-align: left;
+    padding-left:10px;
+    text-indent: 12px;
+}
+
+.main-promote table tr th .dt-2{
+    margin-top:20px;
+    text-align:left;
+    padding-left:10px;
+}
+
+.main-promote table tr th .dd-1{
+    margin-top:10px;
+    margin-left:-10px;
+    text-align:left;
+    padding-left:21px;
+}
+
+.main-promote table tr th .contain-left img{
+    height:200px;
+    width:210px;
+}
+
+
+.main-promote table tr th .contain-right .dd-1 button{
+    height:30px;
+    width: 80px;
+    background: red;
+    color:#ffffff;
+    border: none;
+    font-size: 14px;
+    z-index: 5;
+}
+
+
+.main-promote table tr th .contain-right{
+    height:200px;
+    width: 200px;
+    float: right;
+    background: #ffffff;
+}
+
+.main-promote table {
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+
+div#mask {
+    height: 300px;
+    width: 30%;
+    background: red;
+    position: relative;
+    left: 34%;
+    top: 50%;
+    margin-top: -500px;
+    display: none;
+}
+
+.top {
+    height: 50px;
+    background: #c0c0c0;
+    line-height:50px;
+    padding-left:25px;
+    font-weight:bold;
+}
+
+#mask .content {
+    height: 250px;
+    padding-top:20px;
+    padding-left:30px;
+    padding-right:30px;
+    line-height:30px;
+    font-size:12px;
+}
+

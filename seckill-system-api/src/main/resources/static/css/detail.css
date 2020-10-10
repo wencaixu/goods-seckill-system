@@ -1,0 +1,82 @@
+#miaosha-activity {
+    height: 500px;
+    width: 100%;
+    margin: 66px auto;
+}
+
+.main-promote-detail {
+    border: 1px solid #c0c0c0;
+    height: 152px;
+    width: 60%;
+    margin: 66px auto;
+    background: #ffffff !important;
+}
+
+div.detail-left-image img {
+    height: 70%;
+    width: 70%;
+}
+
+div.detail-left-image {
+    float: left;
+    height: 100%;
+    width: 20%;
+    border: 1px #c0c0c0;
+    padding-top: 35px;
+    padding-left: 48px;
+}
+
+div.detail-middle-desc {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+div.detail-right-btn {
+    float: left;
+    height: 150px;
+    width: 30%;
+    line-height: 100%;
+    padding-right: 50px;
+}
+
+div.detail-right-btn button {
+    height: 40px;
+    width: 180px;
+    background: red;
+    color: #ffff;
+    border: 1px solid #c0c0c0;
+    margin: 30px auto 0 auto;
+    display: block;
+}
+
+.good-title {
+    height: 50px;
+    line-height: 50px;
+    text-indent: 40px;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.good-price {
+    height: 50px;
+    padding-left: 40px;
+    line-height: 50px;
+}
+
+.good-store {
+    line-height: 50px;
+    height: 50px;
+    padding-left: 40px;
+}
+
+img.logo {
+    height: 100%;
+    width: 100%;
+}
+
+.good-price b,.good-store b {
+    padding-right: 30px;
+    font-size: 18px;
+    color: red;
+}
