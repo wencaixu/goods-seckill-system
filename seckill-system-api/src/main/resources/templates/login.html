@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录页面</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="../static/css/input.css">
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/input.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/index.css">
+    <script src="http://localhost:8088/js/jquery-3.3.1.min.js"></script>
 </head>
 <body class="clear-float">
-<div class="top-nav">
-    <div class="border">
-        <div class="nav container">
-            <div class="right">
-                <a href="">登录</a> |
-                <a href="">注册</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="login-main">
     <div class="login-box">
-        <div class = "controller-header">
-            <h3>客人请登录~</h3>
-        </div>
-        <div class="controller-box" style = "margin-top:40px;">
-            <input name="name" type="text" placeholder="登录名"/>
-        </div>
-        <div class="controller-box">
-            <input name="name" type="password" placeholder="密码"/>
-        </div>
-        <div class="controller-box">
-            <input name="name" type="button" value="登录名"/>
-        </div>
+        <form method="post">
+            <div class="controller-header">
+                <h3>客人请登录~</h3>
+            </div>
+            <div class="controller-box" style="margin-top:40px;">
+                <input name="nickname" id="nickname" type="text" placeholder="登录名"/>
+            </div>
+            <div class="controller-box">
+                <input name="password" id="password" type="password" placeholder="密码"/>
+            </div>
+            <div class="controller-box">
+                <input name="btn" id="login" type="button" value="登录名"/><br/>
+                <span> 还没有账号?进入<a href = "/register.html">注册页面</a></span>
+            </div>
+        </form>
     </div>
 </div>
 
 </body>
 </html>
+
+<script>
+    $("#login").click(function () {
+        var username = $("input[name='nickname']").val();
+        var password = $("input[name='password']").val();
+
+        var date = {'nickname': username, 'password': password};
+
+        $.ajax({
+            url: "http://localhost:8088/user/login",
+            data: date,
+            type: "post",
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (result) {
+                var serializer = eval('(' + JSON.stringify(result) + ')');
+                alert(serializer.msg);
+                if (result.code === 200) {
+                    window.location.href = "/index.html";
+                }else{
+                    window.location.href = "/login.html";
+                }
+            },
+            error: function (result) {
+                var serializer = eval('(' + JSON.stringify(result) + ')');
+                alert(serializer.msg);
+                window.location.href = "/login.html";
+            }
+        });
+    });
+</script>

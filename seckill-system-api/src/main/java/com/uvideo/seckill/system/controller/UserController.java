@@ -1,41 +1,45 @@
 package com.uvideo.seckill.system.controller;
 
-import com.uvideo.seckill.system.seckill.good.Goods;
-import com.uvideo.seckill.system.service.ConfigService;
-import com.uvideo.seckill.system.service.GoodsService;
-import com.uvideo.seckill.system.service.cache.RedisCache;
+import com.uvideo.seckill.system.response.ResponseRs;
+import com.uvideo.seckill.system.seckill.user.User;
+import com.uvideo.seckill.system.service.seckill.service.ConfigService;
+import com.uvideo.seckill.system.service.seckill.service.GoodsService;
+import com.uvideo.seckill.system.service.seckill.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author wencai.xu
  */
 @RequestMapping("/user")
-@RestController
+@Controller
 public class UserController {
 
-    private final GoodsService userService;
 
-    private final ConfigService configService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(GoodsService userService, ConfigService configService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.configService = configService;
     }
 
-    @RequestMapping(value = "/getAllUser",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
-    private Goods getAllUser(){
-        return userService.getOne(1L);
+    private ResponseRs register(HttpServletRequest request, User user){
+        ResponseRs responseRs = userService.register(user);
+        return responseRs;
     }
 
-    @RequestMapping(value = "/cacheConfig",method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     @ResponseBody
-    private RedisCache getCacheConfig(){
-        return configService.getRedisCache();
+    private ResponseRs login(HttpServletRequest request, User user){
+        ResponseRs responseRs = userService.login(user,request);
+        return responseRs;
     }
 }

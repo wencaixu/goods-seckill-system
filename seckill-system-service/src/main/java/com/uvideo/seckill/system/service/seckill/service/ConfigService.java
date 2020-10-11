@@ -1,4 +1,4 @@
-package com.uvideo.seckill.system.service;
+package com.uvideo.seckill.system.service.seckill.service;
 
 import com.uvideo.seckill.system.service.cache.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;

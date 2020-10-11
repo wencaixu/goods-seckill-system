@@ -2,6 +2,7 @@ package com.uvideo.seckill.system.seckill.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "miaosha_user")
+@ToString
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler"})
 public class User {
     @Id

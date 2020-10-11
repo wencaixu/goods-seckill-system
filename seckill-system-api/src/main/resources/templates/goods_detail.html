@@ -1,108 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>秒杀商品详情页</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/detail.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/index.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/detail.css">
 </head>
 <body class="clear-float">
-<div class="top-nav">
-    <div class="border">
-        <div class="nav container">
-            <div class="right">
-                <a href="">登录</a> |
-                <a href="">注册</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="miaosha-activity">
     <div class="main-promote-detail">
 
         <div class="detail-left-image">
-            <img class="logo" src="../static/images/goods.jpg" height="70%" width="70%"/>
+            <img class="logo" src="http://localhost:8088/images/goods.jpg" height="70%" width="70%"/>
         </div>
 
         <div class="detail-middle-desc">
             <div class="good-title">
-                富勒双翼游神X200鼠标1元秒杀~~限时秒杀
+                <span th:text="${activity.goods.goodsTitle}"></span>
             </div>
 
             <div class="good-price">
-                ￥ <b>100</b>
-                市场价：<span style="text-decoration:line-through;">￥ 1000.00元</span>
+                <span style="color:red">
+                   ￥<b>
+                        <span th:text="${activity.seckillGoods.price}"></span>
+                    </b>
+                </span>
+                &nbsp;&nbsp;
+                市场价：￥<span th:text="${activity.goods.goodsPrice}" style="text-decoration: line-through"></span>
             </div>
 
             <div class="good-store">
-                剩余库存数量:<b>100</b>
+                剩余库存数量:<b th:text="${activity.seckillGoods.stockCount}"></b>
             </div>
         </div>
 
         <div class="detail-right-btn">
-            <button>秒杀</button>
-            <button style="margin-top:0;border-top:0;background:#ffffff;color:#000000;">剩余时间</button>
+            <button style="cursor: pointer;">秒杀</button>
+            <button style="margin-top:0;border-top:0;background:#ffffff;color:#000000;">
+                <span th:text="${timer}"></span>s
+            </button>
         </div>
     </div>
-
-    <div class="main-promote-detail">
-
-        <div class="detail-left-image">
-            <img class="logo" src="../static/images/goods.jpg" height="75" width="121"/>
-        </div>
-
-        <div class="detail-middle-desc">
-            <div class="good-title">
-                富勒双翼游神X200鼠标1元秒杀~~限时秒杀
-            </div>
-
-            <div class="good-price">
-                ￥ <b>100</b>
-                市场价：<span style="text-decoration:line-through;">￥ 1000.00元</span>
-            </div>
-
-            <div class="good-store">
-                剩余库存数量:<b>100</b>
-            </div>
-        </div>
-
-        <div class="detail-right-btn">
-            <button>秒杀</button>
-            <button style="margin-top:0;border-top:0;background:#ffffff;color:#000000;">剩余时间</button>
-        </div>
-    </div>
-
-    <div class="main-promote-detail">
-
-        <div class="detail-left-image">
-            <img class="logo" src="../static/images/goods.jpg" height="75" width="121"/>
-        </div>
-
-        <div class="detail-middle-desc">
-            <div class="good-title">
-                富勒双翼游神X200鼠标1元秒杀~~限时秒杀
-            </div>
-
-            <div class="good-price">
-                ￥ <b>100</b>
-                市场价：<span style="text-decoration:line-through;">￥ 1000.00元</span>
-            </div>
-
-            <div class="good-store">
-                剩余库存数量:<b>100</b>
-            </div>
-        </div>
-
-        <div class="detail-right-btn">
-            <button>秒杀</button>
-            <button style="margin-top:0;border-top:0;background:#ffffff;color:#000000;">剩余时间</button>
-        </div>
-    </div>
-
 </div>
 
 

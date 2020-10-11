@@ -117,18 +117,16 @@ body {
 }
 
 .main-promote table tr th .dt-1{
-    margin-top:30px;
+    margin-top:20px;
     text-align: left;
     padding-left:10px;
-    text-indent: 12px;
 }
 
-.main-promote table tr th .dt-2{
-    margin-top:20px;
-    text-align:left;
-    padding-left:10px;
+.main-promote table tr th .dt-2 {
+    margin-top: 6px;
+    text-align: left;
+    padding-left: 10px;
 }
-
 .main-promote table tr th .dd-1{
     margin-top:10px;
     margin-left:-10px;
@@ -169,11 +167,11 @@ body {
 div#mask {
     height: 300px;
     width: 30%;
-    background: red;
+    background: #fff;
     position: relative;
     left: 34%;
     top: 50%;
-    margin-top: -500px;
+    margin-top: -300px;
     display: none;
 }
 

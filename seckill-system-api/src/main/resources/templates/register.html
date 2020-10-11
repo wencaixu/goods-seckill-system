@@ -4,37 +4,61 @@
     <meta charset="UTF-8">
     <title>注册页面</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="../static/css/input.css">
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/input.css">
+    <link rel="stylesheet" href="http://localhost:8088/css/index.css">
+    <script src="http://localhost:8088/js/jquery-3.3.1.min.js"></script>
 </head>
 <body class="clear-float">
-<div class="top-nav">
-    <div class="border">
-        <div class="nav container">
-            <div class="right">
-                <a href="">登录</a> |
-                <a href="">注册</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="login-main">
     <div class="login-box">
-        <div class = "controller-header">
-            <h3>游客请注册~</h3>
-        </div>
-        <div class="controller-box" style = "margin-top:40px;">
-            <input name="name" type="text" placeholder="注册名称"/>
-        </div>
-        <div class="controller-box">
-            <input name="name" type="password" placeholder="密码"/>
-        </div>
-        <div class="controller-box">
-            <input name="name" type="button" value="注册"/>
-        </div>
+        <form method="post">
+            <div class = "controller-header">
+                <h3>游客请注册~</h3>
+            </div>
+            <div class="controller-box" style = "margin-top:40px;">
+                <input name="nickname" type="text" placeholder="注册名称"/>
+            </div>
+            <div class="controller-box">
+                <input name="password" type="password" placeholder="密码"/>
+            </div>
+            <div class="controller-box">
+                <input name="btn" type="button" id = "register" value="注册"/>
+            </div>
+        </form>
     </div>
 </div>
 
 </body>
 </html>
+
+<script>
+    $("#register").click(function(){
+        var username = $("input[name='nickname']").val();
+        var password = $("input[name='password']").val();
+
+        var date = {'nickname': username, 'password': password};
+
+        $.ajax({
+            url: "http://localhost:8088/user/register",
+            data: date,
+            type: "post",
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (result) {
+                var serializer = eval('(' + JSON.stringify(result) + ')');
+                alert(serializer.msg);
+                if (result.code === 200) {
+                    window.location.href = "/login.html";
+                }else{
+                    window.location.href = "/register.html";
+                }
+            },
+            error: function (result) {
+                var serializer = eval('(' + JSON.stringify(result) + ')');
+                alert(serializer.msg);
+                window.location.href = "/register.html";
+            }
+        });
+    });
+</script>

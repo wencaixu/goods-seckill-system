@@ -15,4 +15,10 @@ import java.io.Serializable;
  */
 @Repository
 public interface UserMapper extends JpaRepository<User, Long>, JpaSpecificationExecutor<User>, Serializable{
+
+    /**
+     * 根据名称查找用户
+     */
+    User findUserByNickname(String nickName);
+
 }

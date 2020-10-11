@@ -21,6 +21,7 @@ public class SeckillGoods {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     private String goodsId;
+    @Column(name = "miaosha_price")
     private String price;
     private String stockCount;
     private String startDate;

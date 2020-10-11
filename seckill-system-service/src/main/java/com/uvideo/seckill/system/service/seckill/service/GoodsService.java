@@ -1,9 +1,11 @@
-package com.uvideo.seckill.system.service;
+package com.uvideo.seckill.system.service.seckill.service;
 
 import com.uvideo.seckill.system.mapper.good.GoodsMapper;
 import com.uvideo.seckill.system.seckill.good.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author wencai.xu
@@ -18,8 +20,8 @@ public class GoodsService {
         this.goodsMapper = goodsMapper;
     }
 
-    public Goods getOne(Long goodId){
-        return goodsMapper.getOne(goodId);
+    public List<Goods> getOne(Long goodId){
+        return goodsMapper.findAll();
     }
 
 }
