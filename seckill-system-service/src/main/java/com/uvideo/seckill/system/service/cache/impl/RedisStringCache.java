@@ -1,6 +1,10 @@
 package com.uvideo.seckill.system.service.cache.impl;
 
 import com.uvideo.seckill.system.service.cache.StringCache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 
 
@@ -8,8 +12,12 @@ import redis.clients.jedis.Jedis;
  *
  * @author wencai.xu
  */
+@Component
 public class RedisStringCache implements StringCache {
 
+    private Logger cacheLogger = LoggerFactory.getLogger(RedisStringCache.class);
+
+    @Autowired
     private Jedis redisCache;
 
     public RedisStringCache(Jedis cache) {
@@ -23,6 +31,16 @@ public class RedisStringCache implements StringCache {
         }catch (Exception ex){
             throw new Exception("set [key=" + key + ", value=" + value + "]", ex);
         }
+    }
+
+    @Override
+    public String get(String key) {
+        try{
+            return redisCache.get(key);
+        }catch (Exception ex){
+            cacheLogger.info("get [key="+key+"]失败",ex);
+        }
+        return null;
     }
 
     @Override

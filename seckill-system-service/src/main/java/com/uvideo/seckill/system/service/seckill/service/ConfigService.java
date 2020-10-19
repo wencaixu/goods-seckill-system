@@ -1,6 +1,6 @@
 package com.uvideo.seckill.system.service.seckill.service;
 
-import com.uvideo.seckill.system.service.cache.RedisCache;
+import com.uvideo.seckill.system.service.cache.context.config.RedisCacheConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class ConfigService {
 
     @Autowired
-    private RedisCache redisCache;
+    private RedisCacheConfig redisCacheConfig;
 
-    public RedisCache getRedisCache(){
-        return redisCache;
+    public RedisCacheConfig getRedisCacheConfig(){
+        return redisCacheConfig;
     }
 
 }

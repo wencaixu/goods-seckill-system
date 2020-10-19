@@ -42,5 +42,5 @@ public class Goods {
     /**
      * 商品库存限制
      */
-    private String goodsStock;
+    private Long goodsStock;
 }

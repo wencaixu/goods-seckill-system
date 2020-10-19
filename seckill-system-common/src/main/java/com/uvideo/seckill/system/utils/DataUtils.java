@@ -1,7 +1,6 @@
 package com.uvideo.seckill.system.utils;
 
 
-import jdk.nashorn.internal.parser.DateParser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +31,10 @@ public class DataUtils {
             return -500L;
         }
         return end.getTime() - start.getTime();
+    }
+
+    public static long getRemainSeconds(String startTime, String endTime){
+        return timeDiff(startTime, endTime) / 1000 / 60;
     }
 
 }

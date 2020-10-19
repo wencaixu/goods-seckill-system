@@ -23,7 +23,7 @@ public class SeckillGoods {
     private String goodsId;
     @Column(name = "miaosha_price")
     private String price;
-    private String stockCount;
+    private Long stockCount;
     private String startDate;
     private String endDate;
 

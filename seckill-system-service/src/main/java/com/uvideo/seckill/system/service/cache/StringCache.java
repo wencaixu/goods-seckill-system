@@ -9,6 +9,8 @@ public interface StringCache {
 
     void set(String key,String value) throws Exception;
 
+    String get(String key);
+
     void set(String key,String value,int expireSeconds) throws Exception;
 
     void expire(String key,int expireSeconds) throws Exception;

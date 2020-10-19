@@ -1,6 +1,6 @@
 package com.uvideo.seckill.system.service.context;
 
-import com.uvideo.seckill.system.service.cache.RedisCache;
+import com.uvideo.seckill.system.service.cache.context.config.RedisCacheConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +13,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedisCacheGenerator {
 
-    private final RedisCache redisCache;
+    private final RedisCacheConfig redisCacheConfig;
 
     @Autowired
-    public RedisCacheGenerator(RedisCache redisCache) {
-        this.redisCache = redisCache;
+    public RedisCacheGenerator(RedisCacheConfig redisCacheConfig) {
+        this.redisCacheConfig = redisCacheConfig;
     }
 
     @Bean
     void jedisCacheInitializer(){
-        System.out.println(redisCache.getHost());
+        System.out.println(redisCacheConfig.getHost());
     }
 }

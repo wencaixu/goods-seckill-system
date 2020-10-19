@@ -52,7 +52,7 @@ div.detail-right-btn button {
 
 .good-title {
     height: 40px;
-    line-height: 40px;
+    /*line-height: 40px;*/
     text-indent: 40px;
     font-size: 18px;
     font-family: monospace;

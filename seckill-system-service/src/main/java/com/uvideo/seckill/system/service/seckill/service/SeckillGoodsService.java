@@ -2,7 +2,7 @@ package com.uvideo.seckill.system.service.seckill.service;
 
 import com.uvideo.seckill.system.mapper.good.SeckillGoodsMapper;
 import com.uvideo.seckill.system.seckill.good.SeckillGoods;
-import com.uvideo.seckill.system.seckill.good.cross.GoodView;
+import com.uvideo.seckill.system.seckill.good.view.GoodView;
 import com.uvideo.seckill.system.utils.DataUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +44,10 @@ public class SeckillGoodsService{
 
     public List<GoodView> getGoodsView(){
         return seckillGoodsMapper.findGoodView();
+    }
+
+    public void updateStock(SeckillGoods goods){
+        seckillGoodsMapper.save(goods);
     }
 
     public GoodView getOneGoodsView(long id){

@@ -24,4 +24,7 @@ public class GoodsService {
         return goodsMapper.findAll();
     }
 
+    public void updateStock(Goods goods){
+         goodsMapper.save(goods);
+    }
 }

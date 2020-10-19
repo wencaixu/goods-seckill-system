@@ -1,10 +1,12 @@
-package com.uvideo.seckill.system.seckill.good.cross;
+package com.uvideo.seckill.system.seckill.good.view;
 
 import com.uvideo.seckill.system.seckill.good.Goods;
 import com.uvideo.seckill.system.seckill.good.SeckillGoods;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class GoodView {
     private Goods goods;
     private SeckillGoods seckillGoods;

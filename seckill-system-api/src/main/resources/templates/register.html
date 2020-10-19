@@ -39,7 +39,7 @@
         var date = {'nickname': username, 'password': password};
 
         $.ajax({
-            url: "http://localhost:8088/user/register",
+            url: "http://localhost:8088/user/register.do",
             data: date,
             type: "post",
             dataType: "json",
@@ -49,15 +49,15 @@
                 var serializer = eval('(' + JSON.stringify(result) + ')');
                 alert(serializer.msg);
                 if (result.code === 200) {
-                    window.location.href = "/login.html";
+                    window.location.href = "/user/login";
                 }else{
-                    window.location.href = "/register.html";
+                    window.location.href = "/user/register";
                 }
             },
             error: function (result) {
                 var serializer = eval('(' + JSON.stringify(result) + ')');
                 alert(serializer.msg);
-                window.location.href = "/register.html";
+                window.location.href = "/user/register";
             }
         });
     });

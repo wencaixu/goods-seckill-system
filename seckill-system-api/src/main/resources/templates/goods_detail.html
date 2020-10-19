@@ -21,7 +21,7 @@
             <div class="good-title">
                 <span th:text="${activity.goods.goodsTitle}"></span>
             </div>
-
+            <br/>
             <div class="good-price">
                 <span style="color:red">
                    ￥<b>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="detail-right-btn">
-            <button style="cursor: pointer;">秒杀</button>
+            <button style="cursor: pointer;"><a th:href = "'/seckill/'+${activity.goods.id}">秒杀</a></button>
             <button style="margin-top:0;border-top:0;background:#ffffff;color:#000000;">
                 <span th:text="${timer}"></span>s
             </button>

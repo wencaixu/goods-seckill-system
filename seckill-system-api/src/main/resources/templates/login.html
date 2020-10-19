@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>登录页面</title>
@@ -16,14 +16,14 @@
                 <h3>客人请登录~</h3>
             </div>
             <div class="controller-box" style="margin-top:40px;">
-                <input name="nickname" id="nickname" type="text" placeholder="登录名"/>
+                <input name="nickname" id="nickname" type="text" value="15837812297" placeholder="登录名"/>
             </div>
             <div class="controller-box">
-                <input name="password" id="password" type="password" placeholder="密码"/>
+                <input name="password" id="password" type="password" value="123456" placeholder="密码"/>
             </div>
             <div class="controller-box">
                 <input name="btn" id="login" type="button" value="登录名"/><br/>
-                <span> 还没有账号?进入<a href = "/register.html">注册页面</a></span>
+                <span> 还没有账号?进入<a href = "/user/register">注册页面</a></span>
             </div>
         </form>
     </div>
@@ -40,7 +40,7 @@
         var date = {'nickname': username, 'password': password};
 
         $.ajax({
-            url: "http://localhost:8088/user/login",
+            url: "http://localhost:8088/user/login.do",
             data: date,
             type: "post",
             dataType: "json",
@@ -50,15 +50,15 @@
                 var serializer = eval('(' + JSON.stringify(result) + ')');
                 alert(serializer.msg);
                 if (result.code === 200) {
-                    window.location.href = "/index.html";
+                    window.location.href = "/index";
                 }else{
-                    window.location.href = "/login.html";
+                    window.location.href = "/user/login";
                 }
             },
             error: function (result) {
                 var serializer = eval('(' + JSON.stringify(result) + ')');
                 alert(serializer.msg);
-                window.location.href = "/login.html";
+                window.location.href = "/user/login";
             }
         });
     });

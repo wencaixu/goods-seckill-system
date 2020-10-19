@@ -12,8 +12,9 @@
     <div class="border">
         <div class="nav container">
             <div class="right">
-                <span th:if="${status} eq 'unlogin'"><a href="/login.html">登录</a></span>
-                <span th:if="${status} eq 'unlogin'">|<a href="/register.html">注册</a></span>
+                <span th:if="${status} eq 'unlogin'"><a href="/user/login">登录</a></span>
+                <span th:if="${status} eq 'unlogin'">|<a href="/user/register">注册</a></span>
+                <span th:if="${status} eq 'login'"><a href="/user/logout">退出登录</a></span>
             </div>
         </div>
     </div>
@@ -53,7 +54,7 @@
                             </dt>
                             <dt class="dt-2">2020.08.21 10点~11点</dt>
                             <dd class="dd-1">
-                                <button><a th:href="${status} eq 'unlogin'?'/login.html':'/goods_detail_url.html/'+${activity.seckillGoods.id}">查看详情</a></button>
+                                <button><a th:href="${status} eq 'unlogin'?'/user/login':'/goods_detail_url/'+${activity.seckillGoods.id}">查看详情</a></button>
                             </dd>
                         </dl>
                     </div>

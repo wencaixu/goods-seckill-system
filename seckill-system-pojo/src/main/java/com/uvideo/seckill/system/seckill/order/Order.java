@@ -27,9 +27,9 @@ public class Order {
     /**
      * 订单id
      */
-    private String orderId;
+    private Long orderId;
     /**
      * 商品id
      */
-    private String goodsId;
+    private Long goodsId;
 }
