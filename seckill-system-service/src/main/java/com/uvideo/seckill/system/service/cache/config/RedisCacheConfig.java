@@ -1,4 +1,4 @@
-package com.uvideo.seckill.system.service.cache.context.config;
+package com.uvideo.seckill.system.service.cache.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

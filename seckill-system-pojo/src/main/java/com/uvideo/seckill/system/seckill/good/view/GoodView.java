@@ -5,6 +5,11 @@ import com.uvideo.seckill.system.seckill.good.SeckillGoods;
 import lombok.Data;
 import lombok.ToString;
 
+/**
+ * 商品视图
+ *
+ * @author wencai.xu
+ */
 @Data
 @ToString
 public class GoodView {

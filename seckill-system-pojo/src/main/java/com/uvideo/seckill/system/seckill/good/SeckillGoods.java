@@ -20,11 +20,31 @@ public class SeckillGoods {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Version
+    private int version;
+
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 秒杀价格
+     */
     @Column(name = "miaosha_price")
     private String price;
+    /**
+     * 库存数量
+     */
     private Long stockCount;
+    /**
+     * 开始时间
+     */
     private String startDate;
+
+    /**
+     * 结束时间
+     */
     private String endDate;
 
 }

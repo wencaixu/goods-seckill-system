@@ -4,7 +4,7 @@ import com.uvideo.seckill.system.seckill.good.view.GoodView;
 import com.uvideo.seckill.system.seckill.order.Order;
 import com.uvideo.seckill.system.seckill.order.OrderInfo;
 import com.uvideo.seckill.system.service.seckill.service.GoodsService;
-import com.uvideo.seckill.system.service.seckill.service.SeckillGoodsService;
+import com.uvideo.seckill.system.service.seckill.service.SeckillEventService;
 import com.uvideo.seckill.system.utils.LoginUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class SeckillController {
 
-    private final SeckillGoodsService seckillGoodsService;
+    private final SeckillEventService seckillEventService;
 
     private final GoodsService goodsService;
 
     @Autowired
-    public SeckillController(SeckillGoodsService seckillGoodsService,GoodsService goodsService) {
-        this.seckillGoodsService = seckillGoodsService;
+    public SeckillController(SeckillEventService seckillEventService, GoodsService goodsService) {
+        this.seckillEventService = seckillEventService;
         this.goodsService = goodsService;
     }
 
@@ -40,7 +40,7 @@ public class SeckillController {
             return "/user/login";
         }
         // 3. 判断goodId的库存-秒杀
-        GoodView oneGoodsView = seckillGoodsService.getOneGoodsView(goodId);
+        GoodView oneGoodsView = seckillEventService.getOneGoodsView(goodId);
         Long stockCount = oneGoodsView.getSeckillGoods().getStockCount();
         if(stockCount == 0){
             return "{\"status\":\"库存不足\"}";
@@ -50,8 +50,8 @@ public class SeckillController {
         Long goodStock = oneGoodsView.getGoods().getGoodsStock();
         oneGoodsView.getGoods().setGoodsStock(--goodStock);
 
-        goodsService.updateStock(oneGoodsView.getGoods());
-        seckillGoodsService.updateStock(oneGoodsView.getSeckillGoods());
+        goodsService.isOversold(goodId);
+        seckillEventService.updateStock(oneGoodsView.getSeckillGoods());
 
         // 5. 写入订单信息
            // 构建订单信息

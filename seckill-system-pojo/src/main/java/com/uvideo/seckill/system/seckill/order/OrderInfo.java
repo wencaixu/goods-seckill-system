@@ -20,14 +20,57 @@ public class OrderInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Version
+    private int version;
+
+    /**
+     * 用户唯一标识
+     */
     private String userId;
+
+    /**
+     * 商品id
+     */
     private String goodsId;
+
+    /**
+     * 邮寄地址
+     */
     private String deliveryAddrId;
+
+    /**
+     * 商品名称
+     */
     private String goodsName;
+
+    /**
+     * 商品数量
+     */
     private String goodsCount;
+
+    /**
+     * 商品价格
+     */
     private String goodsPrice;
+
+    /**
+     * 订单通道
+     */
     private String orderChannel;
+
+    /**
+     * 状态
+     */
     private String status;
+
+    /**
+     * 创建日期
+     */
     private String createDate;
+
+    /**
+     * 支付时间
+     */
     private String payDate;
 }

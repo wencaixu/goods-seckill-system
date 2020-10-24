@@ -1,7 +1,9 @@
-package com.uvideo.seckill.system.service.cache.context;
+package com.uvideo.seckill.system.service.context;
 
 
-import com.uvideo.seckill.system.service.cache.context.config.RedisCacheConfig;
+import com.uvideo.seckill.system.service.cache.config.RedisCacheConfig;
+import com.uvideo.seckill.system.service.filter.BloomBloomFilter;
+import com.uvideo.seckill.system.service.filter.BloomFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,7 @@ import redis.clients.jedis.Jedis;
  * @author wencai.xu
  */
 @Configuration
-public class JedisCache {
+public class CacheContext {
 
     @Autowired
     private RedisCacheConfig redisCacheConfig;
@@ -21,5 +23,10 @@ public class JedisCache {
     @Bean
     Jedis createJedis(){
        return new Jedis(redisCacheConfig.getHost(), redisCacheConfig.getPort(), redisCacheConfig.getTimeout());
+    }
+
+    @Bean
+    BloomFilter createCacheFilter(){
+        return new BloomBloomFilter();
     }
 }

@@ -1,6 +1,6 @@
 package com.uvideo.seckill.system.controller;
 
-import com.uvideo.seckill.system.service.seckill.service.SeckillGoodsService;
+import com.uvideo.seckill.system.service.seckill.service.SeckillEventService;
 import com.uvideo.seckill.system.config.PageConfig;
 import com.uvideo.seckill.system.utils.LoginUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class PageController {
 
-    private final SeckillGoodsService seckillGoodsService;
+    private final SeckillEventService seckillEventService;
 
     @Autowired
-    public PageController(SeckillGoodsService seckillGoodsService) {
+    public PageController(SeckillEventService seckillEventService) {
 
-        this.seckillGoodsService = seckillGoodsService;
+        this.seckillEventService = seckillEventService;
     }
 
     @RequestMapping(value = {"/index"})
@@ -31,7 +31,7 @@ public class PageController {
         ModelAndView mv = new ModelAndView();
         LoginUtils.setUserIndexStatus(request, mv);
         mv.setViewName(PageConfig.INDEX_HTML);
-        mv.addObject("activity", seckillGoodsService.getGoodsView());
+        mv.addObject("activity", seckillEventService.getGoodsView());
         return mv;
     }
 }

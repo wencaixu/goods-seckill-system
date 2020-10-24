@@ -1,7 +1,7 @@
 package com.uvideo.seckill.system.controller;
 
 import com.uvideo.seckill.system.seckill.good.view.GoodView;
-import com.uvideo.seckill.system.service.seckill.service.SeckillGoodsService;
+import com.uvideo.seckill.system.service.seckill.service.SeckillEventService;
 import com.uvideo.seckill.system.utils.LoginUtils;
 import com.uvideo.seckill.system.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,11 @@ import static com.uvideo.seckill.system.config.PageConfig.LOGIN_HTML;
 @Controller
 public class GoodsController {
 
-    private final SeckillGoodsService seckillGoodsService;
+    private final SeckillEventService seckillEventService;
 
     @Autowired
-    public GoodsController(SeckillGoodsService seckillGoodsService) {
-        this.seckillGoodsService = seckillGoodsService;
+    public GoodsController(SeckillEventService seckillEventService) {
+        this.seckillEventService = seckillEventService;
     }
 
     @RequestMapping(value = "goods_detail_url/{id}")
@@ -38,7 +38,7 @@ public class GoodsController {
             mv.setViewName(LOGIN_HTML);
             return mv;
         }
-        GoodView goodsView = seckillGoodsService.getOneGoodsView(id);
+        GoodView goodsView = seckillEventService.getOneGoodsView(id);
         mv.setViewName(GOODS_HTML);
         mv.addObject("activity", goodsView);
         mv.addObject("timer", TimeUtils.getSeckillRemainSeconds(goodsView));

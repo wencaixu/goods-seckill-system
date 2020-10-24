@@ -20,6 +20,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Version
+    private int version;
+
     /**
      * 用户id
      */

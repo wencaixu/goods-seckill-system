@@ -10,6 +10,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,28 +19,32 @@ import java.util.stream.Collectors;
  * @author wencai.xu
  */
 @Service
-public class SeckillGoodsService{
+public class SeckillEventService {
 
     private final SeckillGoodsMapper seckillGoodsMapper;
 
     @Autowired
-    public SeckillGoodsService(SeckillGoodsMapper seckillGoodsMapper) {
+    public SeckillEventService(SeckillGoodsMapper seckillGoodsMapper) {
         this.seckillGoodsMapper = seckillGoodsMapper;
     }
 
-    public List<SeckillGoods> getSeckillGoods(){
+    public List<SeckillGoods> getSeckillGoods() throws ParseException {
         List<SeckillGoods> seckillGoods = seckillGoodsMapper.findAll();
-        if(CollectionUtils.isEmpty(seckillGoods)){
-            return new ArrayList<>();
-        }
-        return seckillGoods.stream().filter(x -> {
-            try {
-                return DataUtils.getDataTimeMillis(x.getEndDate()) > System.currentTimeMillis();
-            } catch (ParseException e) {
-                e.printStackTrace();
-                return false;
+        List<SeckillGoods> servingEvents = new ArrayList<>();
+
+        for(SeckillGoods goods : seckillGoods){
+            if(this.isEventServing(goods)) {
+                servingEvents.add(goods);
             }
-        }).collect(Collectors.toList());
+        }
+        return servingEvents;
+    }
+
+    /**
+     * 秒杀活动是否可投
+     */
+    private boolean isEventServing(SeckillGoods seckillGoods) throws ParseException {
+        return DataUtils.getDataTimeMillis(seckillGoods.getEndDate()) > System.currentTimeMillis();
     }
 
     public List<GoodView> getGoodsView(){

@@ -1,4 +1,4 @@
-package com.uvideo.seckill.system.limiter;
+package com.uvideo.seckill.system.service.limiter;
 
 /**
  * 限流
